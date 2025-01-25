@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Be My Valentine</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: 'Arial', sans-serif;
+            background: linear-gradient(to bottom, #ff9a9e, #fad0c4);
+            color: #333;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            overflow: hidden;
+        }
+
+        .card {
+            text-align: center;
+            background: white;
+            padding: 2rem;
+            border-radius: 20px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+            max-width: 500px;
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            color: #e63946;
+            margin-bottom: 1rem;
+        }
+
+        p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+        }
+
+        button {
+            background-color: #e63946;
+            color: white;
+            border: none;
+            padding: 0.75rem 1.5rem;
+            font-size: 1.2rem;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        button:hover {
+            background-color: #d32f2f;
+        }
+
+        .heart {
+            font-size: 3rem;
+            color: #e63946;
+            margin-bottom: 1rem;
+            animation: heartbeat 1.5s infinite;
+        }
+
+        @keyframes heartbeat {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.2); }
+        }
+
+        @keyframes confetti {
+            0% { transform: translateY(0); opacity: 1; }
+            100% { transform: translateY(100vh); opacity: 0; }
+        }
+
+        .confetti {
+            position: absolute;
+            width: 10px;
+            height: 10px;
+            background: #e63946;
+            border-radius: 50%;
+            animation: confetti 2s ease-out forwards;
+            opacity: 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="card">
+        <div class="heart">❤️</div>
+        <h1>Will You Be My Valentine?</h1>
+        <p>Dear Monkey,<br> You make my world brighter, and I can't imagine Valentine's Day without you. Will you make this day extra special by being my Valentine?</p>
+        <button onclick="showConfetti()">Yes, I will!</button>
+    </div>
+
+    <script>
+        function showConfetti() {
+            for (let i = 0; i < 100; i++) {
+                const confetti = document.createElement('div');
+                confetti.classList.add('confetti');
+                document.body.appendChild(confetti);
+
+                const x = Math.random() * window.innerWidth;
+                const y = Math.random() * -100;
+                const size = Math.random() * 10 + 5;
+                const duration = Math.random() * 2 + 1;
+                const delay = Math.random();
+
+                confetti.style.left = `${x}px`;
+                confetti.style.top = `${y}px`;
+                confetti.style.width = `${size}px`;
+                confetti.style.height = `${size}px`;
+                confetti.style.backgroundColor = `hsl(${Math.random() * 360}, 100%, 70%)`;
+                confetti.style.animation = `confetti ${duration}s ease-out ${delay}s forwards`;
+
+                setTimeout(() => {
+                    confetti.remove();
+                }, (duration + delay) * 1000);
+            }
+            alert('Yaysies! I can’t wait to celebrate with you my Monkey! ❤️');
+        }
+    </script>
+</body>
+</html>
